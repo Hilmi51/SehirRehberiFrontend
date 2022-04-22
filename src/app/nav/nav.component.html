@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand p-2" href="#">Şehir Rehberi</a>
+  <div class="container-fluid">
+    <button
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      class="navbar-toggler collapsed"
+      data-bs-target="#navbarColor02"
+      data-bs-toggle="collapse"
+      type="button"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            routerLink="city"
+            routerLinkActive="active"
+          >
+            Şehirler
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="value" routerLinkActive="active">
+            Values
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="cityadd" routerLinkActive="active">
+            Şehir Ekle
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register" routerLinkActive="active">
+            Kayıt ol
+          </a>
+        </li>
+      </ul>
+      <!--! Buraya bakılacak -->
+      <form
+        #loginForm="ngForm"
+        (ngSubmit)="login()"
+        *ngIf="isAuthenticated"
+        class="d-flex"
+      >
+        <input
+          [(ngModel)]="loginUser.userName"
+          class="form-control me-sm-2"
+          name="userName"
+          placeholder="User Name"
+          required
+          type="text"
+        />
+        <input
+          [(ngModel)]="loginUser.password"
+          class="form-control me-sm-2"
+          name="password"
+          placeholder="Passoword"
+          required
+          type="password"
+        />
+        <button
+          [disabled]="!loginForm.valid"
+          class="btn btn-secondary my-2 my-sm-0"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+      <button
+        (click)="logOut()"
+        *ngIf="isAuthenticated"
+        class="btn btn-secondary my-2 my-sm-0"
+        type="submit"
+      >
+        Çıkış
+      </button>
+    </div>
+  </div>
+</nav>
